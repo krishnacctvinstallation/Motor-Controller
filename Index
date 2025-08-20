@@ -1,0 +1,85 @@
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Motor Controller Login</title>
+  <style>
+    body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.login-section {
+  background-image: url('login-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+    body { font-family: sans-serif; padding: 20px; background-color: #f4f4f4; }
+    .login, .control { max-width: 300px; margin: auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .hidden { display: none; }
+    button { margin-top: 10px; width: 100%; padding: 10px; }
+  </style>
+</head>
+<body>
+<div class="login-section">
+  <div class="login-box">
+    <h2>Login</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+  </div>
+</div>
+  <div class="login" id="loginBox">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username" required /><br><br>
+    <input type="password" id="password" placeholder="Password" required /><br><br>
+    <button onclick="login()">Login</button>
+    <p id="error" style="color: red;"></p>
+  </div>
+
+  <div class="control hidden" id="controlBox">
+    <h2>Motor Controller</h2>
+    <button onclick="motorOn()">🟢 Motor ON</button>
+    <button onclick="motorOff()">🔴 Motor OFF</button>
+    <option onclick="v1">v1 phase live voltage</option>
+  </div>1
+
+  <script>
+    const correctUser = "ahir";
+    const correctPass = "12345";
+
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if (user === correctUser && pass === correctPass) {
+        document.getElementById("loginBox").classList.add("hidden");
+        document.getElementById("controlBox").classList.remove("hidden");
+      } else {
+        document.getElementById("error").innerText = "so sorry 🖕🖕🖕";
+      }
+    }
+
+    function motorOn() {
+      alert("Motor ON command sent!");
+      // You can replace this with API call or GPIO command
+    }
+
+    function motorOff() {
+      alert("Motor OFF command sent!");
+    }
+    function v1() {
+      alert("v1 phase live voltage!");
+    }
+  </script>
+</body>
+</html>
