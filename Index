@@ -10,10 +10,11 @@
       padding: 0;
       height: 100%;
       font-family: sans-serif;
+      background-color: #f4f4f4;
     }
 
     .login-section {
-      background-image: url('login_background.png'); /* <-- tamari image */
+      background-image: url('login-bg.jpg'); /* background image */
       background-size: cover;
       background-position: center;
       height: 100vh;
@@ -23,89 +24,109 @@
     }
 
     .box {
-      max-width: 300px;
+      max-width: 320px;
       width: 100%;
       padding: 20px;
-      background: rgba(255,255,255,0.9);
+      background: white;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
       text-align: center;
     }
 
+    .hidden { display: none; }
     input, button {
       width: 100%;
-      margin: 8px 0;
       padding: 10px;
-      border-radius: 5px;
+      margin: 8px 0;
       border: 1px solid #ccc;
-      font-size: 14px;
+      border-radius: 5px;
     }
-
     button {
-      background: #2b7cff;
+      background: #007bff;
       color: white;
-      border: none;
+      font-weight: bold;
       cursor: pointer;
     }
-
-    button:hover {
-      background: #1a5bcc;
+    button:hover { background: #0056b3; }
+    .live-values {
+      margin-top: 15px;
+      text-align: left;
     }
-
-    .hidden {
-      display: none;
+    .live-values p {
+      margin: 5px 0;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <!-- Login Section -->
-  <div class="login-section" id="loginSection">
-    <div class="box">
-      <h2>Login</h2>
-      <input type="text" id="username" placeholder="Username" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button onclick="login()">Login</button>
-      <p id="error" style="color: red;"></p>
+
+<!-- LOGIN PAGE -->
+<div class="login-section" id="loginBox">
+  <div class="box">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button onclick="login()">Login</button>
+    <p id="error" style="color: red;"></p>
+  </div>
+</div>
+
+<!-- CONTROL PAGE -->
+<div class="login-section hidden" id="controlBox">
+  <div class="box">
+    <h2>Motor Controller</h2>
+    <button onclick="motorOn()">🟢 Motor ON</button>
+    <button onclick="motorOff()">🔴 Motor OFF</button>
+
+    <div class="live-values">
+      <h3>Live Values</h3>
+      <p>V1: <span id="v1">--</span> V</p>
+      <p>V2: <span id="v2">--</span> V</p>
+      <p>V3: <span id="v3">--</span> V</p>
+      <p>C1: <span id="c1">--</span> A</p>
+      <p>C2: <span id="c2">--</span> A</p>
+      <p>C3: <span id="c3">--</span> A</p>
     </div>
   </div>
+</div>
 
-  <!-- Control Section -->
-  <div class="login-section hidden" id="controlSection">
-    <div class="box">
-      <h2>Motor Controller</h2>
-      <button onclick="motorOn()">🟢 Motor ON</button>
-      <button onclick="motorOff()">🔴 Motor OFF</button>
-      <button onclick="v1()">⚡ V1 Phase Live Voltage</button>
-    </div>
-  </div>
+<script>
+  const correctUser = "ahir";
+  const correctPass = "12345";
 
-  <script>
-    const correctUser = "ahir";
-    const correctPass = "12345";
+  function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
 
-    function login() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-
-      if (user === correctUser && pass === correctPass) {
-        document.getElementById("loginSection").classList.add("hidden");
-        document.getElementById("controlSection").classList.remove("hidden");
-      } else {
-        document.getElementById("error").innerText = "❌ Incorrect Username or Password!";
-      }
+    if (user === correctUser && pass === correctPass) {
+      document.getElementById("loginBox").classList.add("hidden");
+      document.getElementById("controlBox").classList.remove("hidden");
+      startLiveValues();
+    } else {
+      document.getElementById("error").innerText = "Invalid Username or Password!";
     }
+  }
 
-    function motorOn() {
-      alert("✅ Motor ON command sent!");
-    }
+  function motorOn() {
+    alert("Motor ON command sent!");
+  }
 
-    function motorOff() {
-      alert("⛔ Motor OFF command sent!");
-    }
+  function motorOff() {
+    alert("Motor OFF command sent!");
+  }
 
-    function v1() {
-      alert("⚡ V1 phase live voltage reading...");
-    }
-  </script>
+  // Fake live values (simulate)
+  function startLiveValues() {
+    setInterval(() => {
+      document.getElementById("v1").innerText = (220 + Math.random()*10).toFixed(1);
+      document.getElementById("v2").innerText = (220 + Math.random()*10).toFixed(1);
+      document.getElementById("v3").innerText = (220 + Math.random()*10).toFixed(1);
+
+      document.getElementById("c1").innerText = (10 + Math.random()*2).toFixed(2);
+      document.getElementById("c2").innerText = (10 + Math.random()*2).toFixed(2);
+      document.getElementById("c3").innerText = (10 + Math.random()*2).toFixed(2);
+    }, 1000); // refresh every 1 sec
+  }
+</script>
 </body>
 </html>
