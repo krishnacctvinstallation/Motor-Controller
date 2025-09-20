@@ -1,6 +1,3 @@
-</script>
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,49 +6,78 @@
   <title>Motor Controller Login</title>
   <style>
     body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+    }
 
-.login-section {
-  background-image: url('login-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-    body { font-family: sans-serif; padding: 20px; background-color: #f4f4f4; }
-    .login, .control { max-width: 300px; margin: auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    .hidden { display: none; }
-    button { margin-top: 10px; width: 100%; padding: 10px; }
+    .login-section {
+      background-image: url('login_background.png'); /* <-- tamari image */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box {
+      max-width: 300px;
+      width: 100%;
+      padding: 20px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    input, button {
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      background: #2b7cff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1a5bcc;
+    }
+
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
-<div class="login-section">
-  <div class="login-box">
-    <h2>Login</h2>
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
-    <button>Login</button>
-  </div>
-</div>
-  <div class="login" id="loginBox">
-    <h2>Login</h2>
-    <input type="text" id="username" placeholder="Username" required /><br><br>
-    <input type="password" id="password" placeholder="Password" required /><br><br>
-    <button onclick="login()">Login</button>
-    <p id="error" style="color: red;"></p>
+  <!-- Login Section -->
+  <div class="login-section" id="loginSection">
+    <div class="box">
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button onclick="login()">Login</button>
+      <p id="error" style="color: red;"></p>
+    </div>
   </div>
 
-  <div class="control hidden" id="controlBox">
-    <h2>Motor Controller</h2>
-    <button onclick="motorOn()">🟢 Motor ON</button>
-    <button onclick="motorOff()">🔴 Motor OFF</button>
-    <option onclick="v1">v1 phase live voltage</option>
-  </div>1
+  <!-- Control Section -->
+  <div class="login-section hidden" id="controlSection">
+    <div class="box">
+      <h2>Motor Controller</h2>
+      <button onclick="motorOn()">🟢 Motor ON</button>
+      <button onclick="motorOff()">🔴 Motor OFF</button>
+      <button onclick="v1()">⚡ V1 Phase Live Voltage</button>
+    </div>
+  </div>
 
   <script>
     const correctUser = "ahir";
@@ -62,25 +88,24 @@
       const pass = document.getElementById("password").value;
 
       if (user === correctUser && pass === correctPass) {
-        document.getElementById("loginBox").classList.add("hidden");
-        document.getElementById("controlBox").classList.remove("hidden");
+        document.getElementById("loginSection").classList.add("hidden");
+        document.getElementById("controlSection").classList.remove("hidden");
       } else {
-        document.getElementById("error").innerText = "so sorry 🖕🖕🖕";
+        document.getElementById("error").innerText = "❌ Incorrect Username or Password!";
       }
     }
 
     function motorOn() {
-      alert("Motor ON command sent!");
-      // You can replace this with API call or GPIO command
+      alert("✅ Motor ON command sent!");
     }
 
     function motorOff() {
-      alert("Motor OFF command sent!");
+      alert("⛔ Motor OFF command sent!");
     }
+
     function v1() {
-      alert("v1 phase live voltage!");
+      alert("⚡ V1 phase live voltage reading...");
     }
   </script>
 </body>
 </html>
-
