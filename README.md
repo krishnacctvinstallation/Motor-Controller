@@ -82,6 +82,9 @@
       <p>V1: <span id="v1">--</span> V</p>
       <p>V2: <span id="v2">--</span> V</p>
       <p>V3: <span id="v3">--</span> V</p>
+      <p>V12: <span id="v12">--</span> V</p>
+      <p>V23: <span id="v23">--</span> V</p>
+      <p>V31: <span id="v31">--</span> V</p>
       <p>C1: <span id="c1">--</span> A</p>
       <p>C2: <span id="c2">--</span> A</p>
       <p>C3: <span id="c3">--</span> A</p>
@@ -120,6 +123,10 @@
       document.getElementById("v1").innerText = (220 + Math.random()*10).toFixed(1);
       document.getElementById("v2").innerText = (220 + Math.random()*10).toFixed(1);
       document.getElementById("v3").innerText = (220 + Math.random()*10).toFixed(1);
+
+      document.getElementById("v12").innerText = (220 + Math.random()*10).toFixed(1);
+      document.getElementById("v23").innerText = (220 + Math.random()*10).toFixed(1);
+      document.getElementById("v31").innerText = (220 + Math.random()*10).toFixed(1);
 
       document.getElementById("c1").innerText = (10 + Math.random()*2).toFixed(2);
       document.getElementById("c2").innerText = (10 + Math.random()*2).toFixed(2);
