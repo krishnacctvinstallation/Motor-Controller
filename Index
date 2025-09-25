@@ -106,7 +106,7 @@
       document.getElementById("controlBox").classList.remove("hidden");
       startLiveValues();
     } else {
-      document.getElementById("error").innerText = "Invalid Username or Password!";
+      document.getElementById("error").innerText = "so sorry 🖕🖕🖕";
     }
   }
 
@@ -124,6 +124,7 @@
       document.getElementById("v1").innerText = (220 + Math.random()*10).toFixed(1);
       document.getElementById("v2").innerText = (220 + Math.random()*10).toFixed(1);
       document.getElementById("v3").innerText = (220 + Math.random()*10).toFixed(1);
+
       document.getElementById("v12").innerText = (220 + Math.random()*10).toFixed(1);
       document.getElementById("v23").innerText = (220 + Math.random()*10).toFixed(1);
       document.getElementById("v31").innerText = (220 + Math.random()*10).toFixed(1);
