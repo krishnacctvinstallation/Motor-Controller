@@ -124,9 +124,9 @@
       document.getElementById("v2").innerText = (220 + Math.random()*10).toFixed(1);
       document.getElementById("v3").innerText = (220 + Math.random()*10).toFixed(1);
 
-      document.getElementById("v12").innerText = (220 + Math.random()*10).toFixed(1);
-      document.getElementById("v23").innerText = (220 + Math.random()*10).toFixed(1);
-      document.getElementById("v31").innerText = (220 + Math.random()*10).toFixed(1);
+      document.getElementById("v12").innerText = (420 + Math.random()*10).toFixed(1);
+      document.getElementById("v23").innerText = (420 + Math.random()*10).toFixed(1);
+      document.getElementById("v31").innerText = (420 + Math.random()*10).toFixed(1);
 
       document.getElementById("c1").innerText = (10 + Math.random()*2).toFixed(2);
       document.getElementById("c2").innerText = (10 + Math.random()*2).toFixed(2);
